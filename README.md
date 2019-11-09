@@ -1,1 +1,1 @@
-Source code for [theowiik.com](www.theowiik.com)
+Source code for [theowiik.com](http://www.theowiik.com)
