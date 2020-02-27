@@ -4,6 +4,11 @@ body {
   margin-bottom: 255px;
 }
 
+.writeHereContainer {
+  height: 128px;
+  padding: 8px;
+}
+
 h1,
 h2,
 h3 {
