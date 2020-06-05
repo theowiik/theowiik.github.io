@@ -44,13 +44,17 @@
       <div class="row">
         <div class="column" style="margin-top: 25%;">
           <h1>Theo Wiik</h1>
-          <div class="writeHereContainer">
+          <div class="write-here-container">
             <p id="writeHere">megalomaniac?</p>
           </div>
 
           <p>
             <a href="https://github.com/theowiik" target="_blank">
               github.com/theowiik
+            </a>
+            <br />
+            <a href="https://theowiik.itch.io/" target="_blank">
+              theowiik.itch.io
             </a>
             <br />
             <a href="https://docs.theowiik.com/" target="_blank">
@@ -61,35 +65,85 @@
           <div style="margin-top: 255px;">
             <h2>Projects</h2>
 
-            <h3>tdws</h3>
-            <p>
-              "top down walk shoot", a free game made in the Godot game
-              engine.<br />
-              Is currently work in progress, and can be played
-              <a href="tdws.html" target="_blank">here</a>.<br />
-              The source code can be viewed
-              <a href="https://github.com/theowiik/tdws" target="_blank">here</a
-              >.
-            </p>
+            <div class="project-container">
+              <h3 class="mb-0">tdws</h3>
 
-            <h3>PIMP</h3>
-            <p>
-              "Professional Image Manipulation Program"<br />
-              Made during the course "Object oriented programming project" in a
-              group.<br />
-              The source code can be viewed
-              <a
-                href="https://github.com/albin-johansson/TDA367-OOP-Project"
-                target="_blank"
-                >here</a
-              >.
-            </p>
+              <div class="badge-container">
+                <span class="badge">Godot</span>
+                <span class="badge">C#</span>
+                <span class="badge">OOP</span>
+              </div>
 
-            <h3>PITCH-BLACK</h3>
-            <p>
-              more info coming, play
-              <a href="PITCH-BLACK/PITCH-BLACK.html" target="_blank">here</a>.
-            </p>
+              <p>
+                "top down walk shoot" - a free game made in the Godot game
+                engine.<br />
+                Is currently work in progress, and can be played
+                <a href="tdws.html" target="_blank">here</a>.<br />
+                The source code can be viewed
+                <a href="https://github.com/theowiik/tdws" target="_blank"
+                  >here</a
+                >.
+              </p>
+            </div>
+
+            <div class="project-container">
+              <h3 class="mb-0">PIMP</h3>
+
+              <div class="badge-container">
+                <span class="badge">Java</span>
+                <span class="badge">JavaFX</span>
+                <span class="badge">MVC</span>
+                <span class="badge">OOP</span>
+              </div>
+
+              <p>
+                "Professional Image Manipulation Program"<br />
+                Made during the course "Object oriented programming project" in
+                a group.<br />
+                The source code can be viewed
+                <a
+                  href="https://github.com/albin-johansson/TDA367-OOP-Project"
+                  target="_blank"
+                  >here</a
+                >.
+              </p>
+            </div>
+
+            <div class="project-container">
+              <h3 class="mb-0">PITCH-BLACK</h3>
+
+              <div class="badge-container">
+                <span class="badge">Godot</span>
+                <span class="badge">GDScript</span>
+                <span class="badge">OOP</span>
+              </div>
+
+              <p>
+                A game made for the Godot Wild Jam #19. Find hidden enemies with
+                your patent pending Rocket2000. Play it
+                <a href="https://theowiik.itch.io/pitch-black" target="_blank"
+                  >here</a
+                >.
+              </p>
+            </div>
+
+            <div class="project-container">
+              <h3 class="mb-0">Unossons Charkuteri</h3>
+
+              <div class="badge-container">
+                <span class="badge">ReactJS</span>
+                <span class="badge">Spring Boot</span>
+                <span class="badge">Liquibase</span>
+                <span class="badge">Maven</span>
+                <span class="badge">Hibernate</span>
+                <span class="badge">OOP</span>
+              </div>
+
+              <p>
+                A website built for Unossons Charkuterie using ReactJS and
+                Spring Boot. Will be deployed soon.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -106,6 +160,7 @@
           "megalomaniac?",
           "I can make an Arduino lamp blink.",
           "hey :)",
+          "Welcome!",
         ];
         const randIndex = Math.floor(Math.random() * quotes.length);
         return quotes[randIndex];
