@@ -1,169 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-  <!-- Basic Page Needs
+  <head>
+    <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>hey :)</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8" />
+    <title>hey :)</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-  <!-- Mobile Specific Metas
+    <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- FONT
+    <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- ICON
+    <!-- ICON
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <!-- CSS
+    <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/css.css" />
 
-  <!-- Favicon
+    <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+  </head>
 
-</head>
-
-<body>
-
-  <!-- Primary Page Layout
+  <body>
+    <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="column" style="margin-top: 25%">
-        <h1>Theo Wiik</h1>
-        <div class="writeHereContainer">
-          <p id="writeHere">megalomaniac?</p>
-        </div>
+    <div class="container">
+      <div class="row">
+        <div class="column" style="margin-top: 25%;">
+          <h1>Theo Wiik</h1>
+          <div class="writeHereContainer">
+            <p id="writeHere">megalomaniac?</p>
+          </div>
 
-        <p>
-          <a href="https://github.com/theowiik" target="_blank">
-            github.com/theowiik
-          </a>
-          <br>
-          <a href="https://docs.theowiik.com/" target="_blank">
-            docs
-          </a>
-        </p>
-
-        <div style="margin-top: 255px">
-          <h2>Projects</h2>
-
-          <h3>tdws</h3>
           <p>
-            "top down walk shoot", a free game made in the Godot game engine.<br>
-            Is currently work in progress, and can be played
-            <a href="tdws.html" target="_blank">here</a>.<br>
-            The source code can be viewed
-            <a href="https://github.com/theowiik/tdws" target="_blank">here</a>.
+            <a href="https://github.com/theowiik" target="_blank">
+              github.com/theowiik
+            </a>
+            <br />
+            <a href="https://docs.theowiik.com/" target="_blank">
+              docs
+            </a>
           </p>
 
-          <h3>PIMP</h3>
-          <p>
-            "Professional Image Manipulation Program"<br>
-            Made during the course "Object oriented programming project" in a group.<br>
-            The source code can be viewed
-            <a href="https://github.com/albin-johansson/TDA367-OOP-Project" target="_blank">here</a>.
-          </p>
+          <div style="margin-top: 255px;">
+            <h2>Projects</h2>
 
-          <h3>PITCH-BLACK</h3>
-          <p>
-            more info coming, play 
-            <a href="PITCH-BLACK/PITCH-BLACK.html" target="_blank">here</a>.
-          </p>
+            <h3>tdws</h3>
+            <p>
+              "top down walk shoot", a free game made in the Godot game
+              engine.<br />
+              Is currently work in progress, and can be played
+              <a href="tdws.html" target="_blank">here</a>.<br />
+              The source code can be viewed
+              <a href="https://github.com/theowiik/tdws" target="_blank">here</a
+              >.
+            </p>
+
+            <h3>PIMP</h3>
+            <p>
+              "Professional Image Manipulation Program"<br />
+              Made during the course "Object oriented programming project" in a
+              group.<br />
+              The source code can be viewed
+              <a
+                href="https://github.com/albin-johansson/TDA367-OOP-Project"
+                target="_blank"
+                >here</a
+              >.
+            </p>
+
+            <h3>PITCH-BLACK</h3>
+            <p>
+              more info coming, play
+              <a href="PITCH-BLACK/PITCH-BLACK.html" target="_blank">here</a>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- JS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script>
-    /**
-     * Returns a random quote.
-     *
-     * @returns a random quote.
-     */
-    function getRandQuote() {
-      const quotes = [
-        "megalomaniac?",
-        "I can make an Arduino lamp blink.",
-        "hey :)"
-      ];
-      const randIndex = Math.floor(Math.random() * quotes.length);
-      return quotes[randIndex];
-    }
-
-    /**
-     * Writes a quote one character at a time.
-     */
-    async function typewrite() {
-      let writeHere = document.getElementById("writeHere");
-      const quote = getRandQuote();
-      let sleepTime = 400;
-
-      // Animate a underscore.
-      for (let i = 0; i < 6; i++) {
-        const char = (i % 2 === 0) ? '_' : ' ';
-        writeHere.innerText = char;
-        await wait(sleepTime);
+    <script>
+      /**
+       * Returns a random quote.
+       *
+       * @returns a random quote.
+       */
+      function getRandQuote() {
+        const quotes = [
+          "megalomaniac?",
+          "I can make an Arduino lamp blink.",
+          "hey :)",
+        ];
+        const randIndex = Math.floor(Math.random() * quotes.length);
+        return quotes[randIndex];
       }
 
-      // Write each char with an underscore at the end.
-      const minSleep = 50;
-      for (let i = 0; i <= quote.length; i++) {
-        await wait(Math.max(sleepTime *= 0.88, minSleep));
-        writeHere.innerText = quote.substring(0, i) + '_ ';
+      /**
+       * Writes a quote one character at a time.
+       */
+      async function typewrite() {
+        let writeHere = document.getElementById("writeHere");
+        const quote = getRandQuote();
+        let sleepTime = 400;
+
+        // Animate a underscore.
+        for (let i = 0; i < 6; i++) {
+          const char = i % 2 === 0 ? "_" : " ";
+          writeHere.innerText = char;
+          await wait(sleepTime);
+        }
+
+        // Write each char with an underscore at the end.
+        const minSleep = 50;
+        for (let i = 0; i <= quote.length; i++) {
+          await wait(Math.max((sleepTime *= 0.88), minSleep));
+          writeHere.innerText = quote.substring(0, i) + "_ ";
+        }
+
+        // Remove the underscore after 2 seconds.
+        await wait(2000);
+        writeHere.innerText = quote;
       }
 
-      // Remove the underscore after 2 seconds.
-      await wait(2000);
-      writeHere.innerText = quote;
-    }
+      /**
+       * Sleeps for ms milliseconds.
+       *
+       * @param ms the amount of time to sleep in milli seconds.
+       */
+      async function wait(ms) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(true);
+          }, ms);
+        });
+      }
 
-    /**
-     * Sleeps for ms milliseconds.
-     *
-     * @param ms the amount of time to sleep in milli seconds.
-     */
-    async function wait(ms) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(true);
-        }, ms);
+      document.addEventListener("DOMContentLoaded", function (event) {
+        typewrite();
       });
-    }
+    </script>
 
-    document.addEventListener("DOMContentLoaded", function (event) {
-      typewrite();
-    });
-  </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-110173281-1"
+    ></script>
 
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110173281-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-110173281-1');
-  </script>
-  <!-- End Document
+      gtag("config", "UA-110173281-1");
+    </script>
+    <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
-
+  </body>
 </html>
