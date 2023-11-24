@@ -4,10 +4,7 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  reactStrictMode: true,
-
- // Add basePath
-  basePath: 'https://theowiik.com',
+  output: 'export',
 }
 
 module.exports = nextConfig;
