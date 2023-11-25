@@ -1,7 +1,7 @@
 import { Project } from '../models/project';
 
 const weave: Project = {
-  id: 1,
+  id: 'weave',
   name: 'Weave',
   description: 'A simple, lightweight, and fast CSS framework.',
   shortDescription: '',
