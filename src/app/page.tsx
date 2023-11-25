@@ -27,15 +27,43 @@ export default function Home() {
       </div>
 
       {projects.map((project) => (
-        <div key={project.id} className="mb-10 border rounded-xl">
+        <div key={project.id} className="mb-10 border rounded-xl p-4">
           {/* Title */}
-          <div className="p-4 shadow-md">
-            <h2 className="text-3xl font-bold">{project.name}</h2>
-            <p className="text-md mt-2">{project.shortDescription}</p>
-          </div>
+          <h2 className="text-3xl font-bold">{project.name}</h2>
+
+          {/* Tags */}
+          {project.tags.length > 0 && (
+            <div className="mt-3 mb-4">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Links */}
+          {project.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              className="text-blue-400"
+            >
+              {link.name}
+            </a>
+          ))}
+
+          {/* Short description */}
+          <p className="text-md mt-2">{project.shortDescription}</p>
+
+          <hr className='my-4' />
 
           {/* Body */}
-          <div className="p-4 shadow-md">
+          <div className="">
             <Markdown>{project.description}</Markdown>
 
             {/* Images */}
