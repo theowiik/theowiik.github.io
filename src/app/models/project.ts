@@ -5,4 +5,10 @@ export interface Project {
   description: string;
   tags: string[];
   images: string[];
+  links: ProjectLink[];
+}
+
+export interface ProjectLink {
+  name: string;
+  url: string;
 }

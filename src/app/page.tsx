@@ -1,6 +1,7 @@
 import { Project } from './models/project';
 import pp from './data/photon-phighters';
 import weave from './data/weave';
+import Markdown from 'react-markdown';
 
 export default function Home() {
   const projects: Project[] = [pp, weave];
@@ -35,7 +36,7 @@ export default function Home() {
 
           {/* Body */}
           <div className="p-4 shadow-md">
-            <p className="whitespace-pre-line">{project.description}</p>
+            <Markdown>{project.description}</Markdown>
 
             {/* Images */}
             <div className="grid grid-cols-3 gap-4 mt-4">
