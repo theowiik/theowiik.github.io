@@ -2,6 +2,7 @@ import { Project } from './models/project';
 import pp from './data/photon-phighters';
 import weave from './data/weave';
 import Markdown from 'react-markdown';
+import Cartridge from './components/cartridge/cartridge';
 
 export default function Home() {
   const projects: Project[] = [pp, weave];
@@ -14,6 +15,8 @@ export default function Home() {
         Passionate about software. Experienced in Fullstack, but aspires to work
         with systems programming and game development.
       </p>
+
+      <Cartridge name={'hello'}></Cartridge>
 
       <div className="mb-8">
         {fanOf.map((thing) => (

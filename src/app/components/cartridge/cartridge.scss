@@ -1,0 +1,150 @@
+body {
+  background: url('https://img.wallpapersafari.com/desktop/1920/1080/97/58/bgoxQz.jpg');
+  background-size: cover;
+}
+
+$width: 20vw;
+$height: 22vw;
+$depth: 2vw;
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(720deg);
+  }
+}
+
+%topAndBottom {
+  position: absolute;
+  left: 0;
+  width: $width - $width / 20;
+  left: $width / 40;
+  height: calc(#{$depth * 2} - 1px);
+  transform: rotateX(-90deg) translateZ(-$depth);
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  img {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 80%;
+  }
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  &:before {
+    right: -$depth * 0.6;
+    border-width: $depth 0 $depth $depth * 0.6;
+    border-color: transparent transparent transparent #444;
+  }
+  &:after {
+    left: -$depth * 0.6;
+    border-width: $depth $depth * 0.6 $depth 0;
+    border-color: transparent #444 transparent transparent;
+  }
+}
+
+%frontAndBack {
+  position: absolute;
+  background: #333;
+  width: $width - $width / 20;
+  left: $width / 40;
+  height: $height;
+  transform-style: preserve-3d;
+  img {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    backface-visibilty: none;
+  }
+  &:before {
+    transform-style: preserve-3d;
+    content: '';
+    position: absolute;
+    width: $depth * 1.2;
+    height: $height;
+    transform: rotateY(-120deg);
+    transform-origin: top left;
+    background: #222;
+  }
+  &:after {
+    transform-style: preserve-3d;
+    content: '';
+    position: absolute;
+    right: 0;
+    width: $depth * 1.2;
+    height: $height;
+    transform: rotateY(120deg);
+    transform-origin: top right;
+    background: #191919;
+  }
+}
+
+.back {
+  @extend %frontAndBack;
+  z-index: 20;
+  transform: translateZ(-$depth);
+}
+
+.front {
+  @extend %frontAndBack;
+  z-index: 10;
+  transform: translateZ($depth);
+  background: #111;
+  &:before {
+    right: 0px;
+    transform-origin: top right;
+  }
+  &:after {
+    left: 0px;
+    transform-origin: top left;
+  }
+}
+
+.top {
+  @extend %topAndBottom;
+  top: 1px;
+  background: #444;
+}
+
+.bottom {
+  @extend %topAndBottom;
+  bottom: -$depth;
+  background: #111;
+  &:after,
+  &:before {
+    border-color: transparent #111 transparent transparent;
+  }
+}
+
+.cartridge {
+  position: fixed;
+  top: 15%;
+  left: 35%;
+  width: $width;
+  height: $height;
+  animation: spin 25s infinite linear;
+  transform: rotateY(6deg) rotateX(265deg);
+  transform-style: preserve-3d;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 90%;
+    height: 50%;
+    background-size: 50% 50%;
+    background: #225522;
+  }
+}
