@@ -4,6 +4,14 @@ $width: $scale * 20px;
 $height: $scale * 22px;
 $depth: $scale * 2px;
 
+// Colors
+$color1: #333;
+$color2: #444;
+$color3: #222;
+$color4: #225522;
+$color5: #191919; // The color inside the cartridge
+$color6: #111;
+
 // Animation
 
 @keyframes spin {
@@ -49,18 +57,18 @@ $depth: $scale * 2px;
   &:before {
     right: -$depth * 0.6;
     border-width: $depth 0 $depth $depth * 0.6;
-    border-color: transparent transparent transparent #444;
+    border-color: transparent transparent transparent $color2;
   }
   &:after {
     left: -$depth * 0.6;
     border-width: $depth $depth * 0.6 $depth 0;
-    border-color: transparent #444 transparent transparent;
+    border-color: transparent $color2 transparent transparent;
   }
 }
 
 %frontAndBack {
   position: absolute;
-  background: #333;
+  background: $color1;
   width: $width - $width / 20;
   left: $width / 40;
   height: $height;
@@ -81,7 +89,7 @@ $depth: $scale * 2px;
     height: $height;
     transform: rotateY(-120deg);
     transform-origin: top left;
-    background: #222;
+    background: $color3;
   }
   &:after {
     transform-style: preserve-3d;
@@ -92,7 +100,7 @@ $depth: $scale * 2px;
     height: $height;
     transform: rotateY(120deg);
     transform-origin: top right;
-    background: #191919;
+    background: $color5;
   }
 }
 
@@ -106,7 +114,7 @@ $depth: $scale * 2px;
   @extend %frontAndBack;
   z-index: 10;
   transform: translateZ($depth);
-  background: #111;
+  background: $color6;
   &:before {
     right: 0px;
     transform-origin: top right;
@@ -120,27 +128,23 @@ $depth: $scale * 2px;
 .top {
   @extend %topAndBottom;
   top: 1px;
-  background: #444;
+  background: $color2;
 }
 
 .bottom {
   @extend %topAndBottom;
   bottom: -$depth;
-  background: #111;
+  background: $color6;
   &:after,
   &:before {
-    border-color: transparent #111 transparent transparent;
+    border-color: transparent $color6 transparent transparent;
   }
 }
 
 .cartridge {
-  //   position: fixed;
-  //   top: 15%;
-  //   left: 35%;
   width: $width;
   height: $height;
   animation: spin 5s ease infinite;
-  //   transform: rotateY(6deg) rotateX(265deg); // keep?
   transform-style: preserve-3d;
   &:before {
     content: '';
@@ -151,6 +155,6 @@ $depth: $scale * 2px;
     width: 90%;
     height: 50%;
     background-size: 50% 50%;
-    background: #225522;
+    background: $color4;
   }
 }
