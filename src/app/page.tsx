@@ -1,3 +1,4 @@
+'use client';
 import Markdown from 'react-markdown';
 import Cartridge from './components/cartridge/cartridge';
 import { Project } from './models/project';
@@ -6,6 +7,7 @@ import pp from './projects/photon-phighters';
 import pitchBlack from './projects/pitch-black';
 import rehypeRaw from 'rehype-raw';
 import weave from './projects/weave';
+import { useState } from 'react';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
@@ -15,10 +17,17 @@ export default function Home() {
     'Software Engineering and Technology M.Sc.',
   ];
 
+  const [selectedProject, setSelectedProject] = useState<string | undefined>();
+
+  const cartridgeClicked = (id: string) => {
+    setSelectedProject(id);
+    const element = document.getElementById('projects');
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="mt-16 px-8">
       <h1 className="text-9xl font-bold">Theo Wiik</h1>
-
       {fanOf.map((thing) => (
         <span
           key={thing}
@@ -27,16 +36,18 @@ export default function Home() {
           {thing}
         </span>
       ))}
-
       <p className="text-xl mt-2">
         Passionate about software. Experienced in Fullstack, but aspires to work
         with systems programming and game development.
       </p>
-
       {/* Cartridges */}
       <div className="flex flex-wrap justify-center items-center my-8 gap-8">
         {projects.map((project) => (
-          <div className="flex justify-center items-center" key={project.id}>
+          <div
+            className="flex justify-center items-center"
+            key={project.id}
+            onClick={() => cartridgeClicked(project.id)}
+          >
             <Cartridge
               image={project?.cartridgeImage}
               link={project.id}
@@ -45,48 +56,49 @@ export default function Home() {
         ))}
       </div>
 
-      {projects.map((project) => (
-        <div
-          key={project.id}
-          className="mb-10 border border-blue-300 rounded-xl p-4"
-          id={project.id}
-        >
-          {/* Title */}
-          <h2 className="text-3xl font-bold">{project.name}</h2>
+      <div id="projects">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            className="mb-10 border border-blue-300 rounded-xl p-4"
+            id={project.id}
+            hidden={selectedProject !== project.id}
+          >
+            {/* Title */}
+            <h2 className="text-3xl font-bold">{project.name}</h2>
 
-          {/* Tags */}
-          {project.tags.length > 0 && (
-            <div className="mt-3 mb-4">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+            {/* Tags */}
+            {project.tags.length > 0 && (
+              <div className="mt-3 mb-4">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
 
-          {/* Links */}
-          {project.links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              className="text-blue-400 mr-2 mb-2"
-            >
-              [{link.name}]
-            </a>
-          ))}
+            {/* Links */}
+            {project.links.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                className="text-blue-400 mr-2 mb-2"
+              >
+                [{link.name}]
+              </a>
+            ))}
 
-          {/* Short description */}
-          <p className="text-md mt-2">{project.shortDescription}</p>
+            {/* Short description */}
+            <p className="text-md mt-2">{project.shortDescription}</p>
 
-          <hr className="my-4" />
+            <hr className="my-4" />
 
-          {/* Body */}
-          <div className="">
+            {/* Body */}
             <Markdown rehypePlugins={[rehypeRaw]}>
               {project.description}
             </Markdown>
@@ -104,8 +116,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       <div className="mt-64"></div>
     </div>
