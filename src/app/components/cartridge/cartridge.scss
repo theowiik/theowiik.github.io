@@ -5,12 +5,12 @@ $height: $scale * 22px;
 $depth: $scale * 2px;
 
 // Colors
-$color1: #333;
-$color2: #444;
-$color3: #222;
-$color4: #225522;
-$color5: #191919; // The color inside the cartridge
-$color6: #111;
+$color1: #333; // Back
+$color2: #444; // Top
+$color3: #222; // Half of the corner
+$color4: #225522; // The color inside the cartridge
+$color5: #191919; // The other side of the corner
+$color6: #111; // Front
 
 // Animation
 
