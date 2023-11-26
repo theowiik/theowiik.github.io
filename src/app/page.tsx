@@ -22,7 +22,7 @@ export default function Home() {
       {/* Cartridges */}
       <h2 className="text-4xl font-bold">Projects</h2>
 
-      <div className="flex flex-row p-8 my-4 bg-blue-200 rounded-xl">
+      <div className="flex flex-row my-4">
         {projects.map((project) => (
           <div className="mr-8 mb-4" key={project.id}>
             <Cartridge image={project?.cartridgeImage}></Cartridge>
