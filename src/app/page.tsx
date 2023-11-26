@@ -1,11 +1,14 @@
-import { Project } from './models/project';
-import pp from './data/photon-phighters';
-import weave from './data/weave';
 import Markdown from 'react-markdown';
 import Cartridge from './components/cartridge/cartridge';
+import { Project } from './models/project';
+import godotSharper from './projects/godot-sharper';
+import pp from './projects/photon-phighters';
+import pitchBlack from './projects/pitch-black';
+import rehypeRaw from 'rehype-raw';
+import weave from './projects/weave';
 
 export default function Home() {
-  const projects: Project[] = [pp, weave];
+  const projects: Project[] = [pp, weave, godotSharper, pitchBlack];
   const fanOf: string[] = ['Linux', 'C#', 'Godot', 'CI'];
 
   return (
@@ -16,7 +19,19 @@ export default function Home() {
         with systems programming and game development.
       </p>
 
-      <Cartridge name={'hello'}></Cartridge>
+      {/* Cartridges */}
+      <h2 className="text-4xl font-bold">Projects</h2>
+
+      <div className="flex flex-row bg-blue-500">
+        {projects.map((project) => (
+          <div className="mr-8" key={project.id}>
+            <Cartridge
+              frontImage={project.images[0]}
+              topImage={project.images[0]}
+            ></Cartridge>
+          </div>
+        ))}
+      </div>
 
       <div className="mb-8">
         {fanOf.map((thing) => (
@@ -63,11 +78,13 @@ export default function Home() {
           {/* Short description */}
           <p className="text-md mt-2">{project.shortDescription}</p>
 
-          <hr className='my-4' />
+          <hr className="my-4" />
 
           {/* Body */}
           <div className="">
-            <Markdown>{project.description}</Markdown>
+            <Markdown rehypePlugins={[rehypeRaw]}>
+              {project.description}
+            </Markdown>
 
             {/* Images */}
             <div className="grid grid-cols-3 gap-4 mt-4">

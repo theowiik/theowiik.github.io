@@ -4,11 +4,11 @@ const photonPhighters: Project = {
   id: 'photon-phighters',
   name: 'Photon Phighters',
   description: `
-A simple, lightweight, and fast CSS framework!!!!!!
+Epic game
   `,
   shortDescription: 'this is the short description',
   tags: [],
-  images: [],
+  images: ['/projects/weave/placeholder.png'],
   links: [
     {
       name: 'GitHub',
