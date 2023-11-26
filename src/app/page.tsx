@@ -11,11 +11,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
-  const fanOf: string[] = [
-    // 'Chalmers',
-    // 'Linux',
-    // 'Software Engineering and Technology M.Sc.',
-  ];
+  const fanOf: string[] = ['Fullstack', 'Chalmers M.Sc.'];
 
   const [selectedProject, setSelectedProject] = useState<string | undefined>();
 
@@ -31,14 +27,22 @@ export default function Home() {
       {fanOf.map((thing) => (
         <span
           key={thing}
-          className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          className="inline-block bg-emerald-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
         >
           {thing}
         </span>
       ))}
       <p className="text-xl mt-2">
-        Passionate about software. Experienced in Fullstack, but aspires to work
-        with systems programming and game development.
+        Software Engineer based in Gothenburg. Reach me on{' '}
+        <a
+          href="https://www.linkedin.com/in/theo-wiik/"
+          target="_blank"
+          className="text-emerald-300 font-bold"
+        >
+          LinkedIn
+        </a>
+        . Passionate about software. Experienced in Fullstack, but aspires to
+        work with systems programming and game development.
       </p>
       {/* Cartridges */}
       <div className="flex flex-wrap justify-center items-center my-8 gap-8">
@@ -60,7 +64,7 @@ export default function Home() {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="mb-10 border border-blue-300 rounded-xl p-4"
+            className="mb-10 my-32"
             id={project.id}
             hidden={selectedProject !== project.id}
           >
@@ -75,7 +79,7 @@ export default function Home() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                    className="inline-block bg-emerald-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
                   >
                     {tag}
                   </span>

@@ -19,7 +19,7 @@ Strategic and fast-paced, the game challenges teams to skillfully use their flas
   links: [
     {
       name: 'GitHub',
-      url: 'https://github.com/weave-game/weave', // Update with the correct GitHub URL for Photon Phighters
+      url: 'https://github.com/theowiik/photon-phighters',
     },
     {
       name: 'itch.io',
