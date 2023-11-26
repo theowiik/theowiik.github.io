@@ -8,7 +8,7 @@ import rehypeRaw from 'rehype-raw';
 import weave from './projects/weave';
 
 export default function Home() {
-  const projects: Project[] = [pp, weave, godotSharper, pitchBlack];
+  const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
   const fanOf: string[] = ['Linux', 'C#', 'Godot', 'CI'];
 
   return (
@@ -25,10 +25,7 @@ export default function Home() {
       <div className="flex flex-row bg-blue-500">
         {projects.map((project) => (
           <div className="mr-8" key={project.id}>
-            <Cartridge
-              frontImage={project.images[0]}
-              topImage={project.images[0]}
-            ></Cartridge>
+            <Cartridge image={project?.cartridgeImage}></Cartridge>
           </div>
         ))}
       </div>

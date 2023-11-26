@@ -8,7 +8,7 @@ Utilities for Godot.
   `,
   shortDescription: 'godot features',
   tags: [],
-  images: ['/projects/weave/placeholder.png'],
+  images: [],
   links: [
     {
       name: 'GitHub',

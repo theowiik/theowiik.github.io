@@ -6,6 +6,7 @@ export interface Project {
   tags: string[];
   images: string[];
   links: ProjectLink[];
+  cartridgeImage?: string;
 }
 
 export interface ProjectLink {

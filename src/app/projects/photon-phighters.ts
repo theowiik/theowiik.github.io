@@ -8,13 +8,14 @@ Epic game
   `,
   shortDescription: 'this is the short description',
   tags: [],
-  images: ['/projects/weave/placeholder.png'],
+  images: ['projects/photon-phighters/gameplay.png'],
   links: [
     {
       name: 'GitHub',
       url: 'https://github.com/weave-game/weave',
     },
   ],
+  cartridgeImage: 'projects/photon-phighters/cartridge.png',
 };
 
 export default photonPhighters;

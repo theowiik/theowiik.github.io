@@ -9,7 +9,7 @@ Steer your line without crashing into each other, work together to get the highe
   shortDescription:
     'A collaborative line-steering game developed at Chalmers/GU, focusing on teamwork and scoring high.',
   tags: ['Godot', 'Game Development', 'C#', 'CSharpier', 'Roslynator'],
-  images: ['/projects/weave/placeholder.png'],
+  images: [],
   links: [
     {
       name: 'GitHub',
@@ -17,6 +17,7 @@ Steer your line without crashing into each other, work together to get the highe
     },
     // Add other links if available
   ],
+  cartridgeImage: 'projects/weave/logo.png',
 };
 
 export default weave;
