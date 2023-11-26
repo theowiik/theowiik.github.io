@@ -66,9 +66,9 @@ export default function Home() {
               key={link.url}
               href={link.url}
               target="_blank"
-              className="text-blue-400"
+              className="text-blue-400 mr-2 mb-2"
             >
-              {link.name}
+              [{link.name}]
             </a>
           ))}
 
