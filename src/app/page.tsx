@@ -37,13 +37,20 @@ export default function Home() {
       <div className="flex flex-wrap justify-center items-center my-8 gap-8">
         {projects.map((project) => (
           <div className="flex justify-center items-center" key={project.id}>
-            <Cartridge image={project?.cartridgeImage}></Cartridge>
+            <Cartridge
+              image={project?.cartridgeImage}
+              link={project.id}
+            ></Cartridge>
           </div>
         ))}
       </div>
 
       {projects.map((project) => (
-        <div key={project.id} className="mb-10 border rounded-xl p-4">
+        <div
+          key={project.id}
+          className="mb-10 border border-blue-300 rounded-xl p-4"
+          id={project.id}
+        >
           {/* Title */}
           <h2 className="text-3xl font-bold">{project.name}</h2>
 
@@ -99,6 +106,8 @@ export default function Home() {
           </div>
         </div>
       ))}
+
+      <div className="mt-64"></div>
     </div>
   );
 }

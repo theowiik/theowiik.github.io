@@ -1,13 +1,20 @@
+'use client';
 import React from 'react';
 import './cartridge.scss';
 
 interface CartridgeProps {
   image?: string;
+  link?: string;
 }
 
-const Cartridge: React.FC<CartridgeProps> = ({ image }) => {
+const Cartridge: React.FC<CartridgeProps> = ({ image, link }) => {
+  const handleClick = () => {
+    const element = document.getElementById(link ?? '');
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="cartridge">
+    <a className="cartridge" onClick={handleClick}>
       <div className="top">
         <img src={image ?? 'img/empty.png'} />
       </div>
@@ -16,7 +23,7 @@ const Cartridge: React.FC<CartridgeProps> = ({ image }) => {
       <div className="front">
         <img src={image ?? 'img/empty.png'} />
       </div>
-    </div>
+    </a>
   );
 };
 

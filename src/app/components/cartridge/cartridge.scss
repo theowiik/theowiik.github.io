@@ -157,4 +157,13 @@ $color6: #6e6e6e; // Front
     background-size: 50% 50%;
     background: $color4;
   }
+
+  // --- Custom ---
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s ease;
+}
+
+.cartridge:hover {
+  box-shadow: 0 0 40px 5px rgba(0, 255, 217, 0.9);
 }
