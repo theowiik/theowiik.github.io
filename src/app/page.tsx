@@ -9,35 +9,36 @@ import weave from './projects/weave';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
-  const fanOf: string[] = ['Linux', 'C#', 'Godot', 'CI'];
+  const fanOf: string[] = [
+    'Chalmers',
+    'Linux',
+    'Software Engineering and Technology M.Sc.',
+  ];
 
   return (
     <div className="mt-16 px-8">
       <h1 className="text-9xl font-bold">Theo Wiik</h1>
-      <p className="text-xl mt-4 mb-8">
+
+      {fanOf.map((thing) => (
+        <span
+          key={thing}
+          className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        >
+          {thing}
+        </span>
+      ))}
+
+      <p className="text-xl mt-2">
         Passionate about software. Experienced in Fullstack, but aspires to work
         with systems programming and game development.
       </p>
 
       {/* Cartridges */}
-      <h2 className="text-4xl font-bold">Projects</h2>
-
-      <div className="flex flex-row my-4">
+      <div className="flex flex-wrap justify-center items-center my-8 gap-8">
         {projects.map((project) => (
-          <div className="mr-8 mb-4" key={project.id}>
+          <div className="flex justify-center items-center" key={project.id}>
             <Cartridge image={project?.cartridgeImage}></Cartridge>
           </div>
-        ))}
-      </div>
-
-      <div className="mb-8">
-        {fanOf.map((thing) => (
-          <span
-            key={thing}
-            className="inline-block bg-blue-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            {thing}
-          </span>
         ))}
       </div>
 
