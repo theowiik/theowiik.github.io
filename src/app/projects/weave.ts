@@ -20,7 +20,7 @@ The game challenges players to navigate lines through dynamic environments, emph
 <br/>
 
 **Gameplay:**<br/>
-<iframe width="50%" height="315" src="https://www.youtube.com/embed/Fw0T2zQHsvo?si=_OK8h9soOaqvfOgD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/Fw0T2zQHsvo?si=_OK8h9soOaqvfOgD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   `,
   shortDescription:
     'A collaborative line-steering game developed at Chalmers/GU, focusing on teamwork and high scores.',

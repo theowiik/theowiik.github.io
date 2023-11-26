@@ -12,9 +12,9 @@ import { useState } from 'react';
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
   const fanOf: string[] = [
-    'Chalmers',
-    'Linux',
-    'Software Engineering and Technology M.Sc.',
+    // 'Chalmers',
+    // 'Linux',
+    // 'Software Engineering and Technology M.Sc.',
   ];
 
   const [selectedProject, setSelectedProject] = useState<string | undefined>();
@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <div className="mt-16 px-8">
-      <h1 className="text-9xl font-bold">Theo Wiik</h1>
+      <h1 className="text-6xl lg:text-8xl font-bold">Theo Wiik</h1>
       {fanOf.map((thing) => (
         <span
           key={thing}
@@ -65,11 +65,13 @@ export default function Home() {
             hidden={selectedProject !== project.id}
           >
             {/* Title */}
-            <h2 className="text-3xl font-bold">{project.name}</h2>
+            <span className="text-4xl font-bold">{project.name}</span>
+            <br />
+            <span>{project.shortDescription}</span>
 
             {/* Tags */}
             {project.tags.length > 0 && (
-              <div className="mt-3 mb-4">
+              <div className="mt-3">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
@@ -93,13 +95,8 @@ export default function Home() {
               </a>
             ))}
 
-            {/* Short description */}
-            <p className="text-md mt-2">{project.shortDescription}</p>
-
-            <hr className="my-4" />
-
             {/* Body */}
-            <Markdown rehypePlugins={[rehypeRaw]}>
+            <Markdown rehypePlugins={[rehypeRaw]} className="mt-4">
               {project.description}
             </Markdown>
 

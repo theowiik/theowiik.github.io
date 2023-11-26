@@ -14,7 +14,7 @@ The gameplay involves navigating through a darkened world, relying on the Rocket
 
 <br/>
 
-<iframe width="50%" height="315" src="https://www.youtube.com/embed/10nakQkVuGc?si=EEQxlkdZsKLO6FxA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/10nakQkVuGc?si=EEQxlkdZsKLO6FxA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   `,
   shortDescription:
     'A game made for Godot Wild Jam #19, with the theme of "discovery".',
