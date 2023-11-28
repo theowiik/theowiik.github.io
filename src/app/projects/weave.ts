@@ -25,13 +25,16 @@ The game challenges players to navigate lines through dynamic environments, emph
   shortDescription:
     'A collaborative line-steering game developed at Chalmers/GU, focusing on teamwork and high scores.',
   tags: ['C#', 'Godot', 'Music', 'Game Development', 'Roslynator'],
-  images: [], // Add paths to images or screenshots of the game
+  images: [
+    'projects/weave/start-screen.png',
+    'projects/weave/gameplay1.png',
+    'projects/weave/game-over.png',
+  ],
   links: [
     {
       name: 'GitHub',
       url: 'https://github.com/weave-game/weave',
     },
-    // Additional links can be added here
   ],
   cartridgeImage: 'projects/weave/logo.png',
 };

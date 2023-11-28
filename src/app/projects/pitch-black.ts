@@ -19,7 +19,10 @@ The gameplay involves navigating through a darkened world, relying on the Rocket
   shortDescription:
     'A game made for Godot Wild Jam #19, with the theme of "discovery".',
   tags: ['Godot', 'Game Development', 'Game Jam'],
-  images: [], // Add paths to images or screenshots of the game
+  images: [
+    'projects/pitch-black/gameplay1.png',
+    'projects/pitch-black/gameplay2.png',
+  ],
   links: [
     {
       name: 'GitHub',

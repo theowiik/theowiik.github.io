@@ -8,6 +8,7 @@ import pitchBlack from './projects/pitch-black';
 import rehypeRaw from 'rehype-raw';
 import weave from './projects/weave';
 import { useState } from 'react';
+import ImageGallery from 'react-image-gallery';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
@@ -20,6 +21,21 @@ export default function Home() {
     const element = document.getElementById('projects');
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    },
+  ];
 
   return (
     <div className="mt-16 px-8">
@@ -59,7 +75,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-
       <div id="projects">
         {projects.map((project) => (
           <div
@@ -104,22 +119,23 @@ export default function Home() {
               {project.description}
             </Markdown>
 
-            {/* Images */}
-            <div className="grid grid-cols-3 gap-4 mt-4">
-              {project.images.map((image, index) => (
-                <div key={index} className="aspect-w-1 aspect-h-1">
-                  <img
-                    src={image}
-                    alt={`Project ${project.name} image ${index + 1}`}
-                    className="object-cover rounded-md"
-                  />
-                </div>
-              ))}
-            </div>
+            <hr className="my-16 border border-emerald-500" />
+
+            <ImageGallery
+              items={project.images.map((image) => ({
+                original: image,
+                thumbnail: image,
+              }))}
+              infinite={true}
+              showPlayButton={false}
+              autoPlay={true}
+              showThumbnails={true}
+              thumbnailPosition="bottom"
+              showBullets={true}
+            />
           </div>
         ))}
       </div>
-
       <div className="mt-64"></div>
     </div>
   );
