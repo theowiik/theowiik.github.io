@@ -128,10 +128,9 @@ export default function Home() {
               }))}
               infinite={true}
               showPlayButton={false}
+              showFullscreenButton={false}
               autoPlay={true}
-              showThumbnails={true}
               thumbnailPosition="bottom"
-              showBullets={true}
             />
           </div>
         ))}

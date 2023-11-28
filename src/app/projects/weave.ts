@@ -26,6 +26,9 @@ The game challenges players to navigate lines through dynamic environments, emph
     'A collaborative line-steering game developed at Chalmers/GU, focusing on teamwork and high scores.',
   tags: ['C#', 'Godot', 'Music', 'Game Development', 'Roslynator'],
   images: [
+    'projects/weave/exhibition1.jpeg',
+    'projects/weave/exhibition3.jpeg',
+    'projects/weave/exhibition2.jpeg',
     'projects/weave/start-screen.png',
     'projects/weave/gameplay1.png',
     'projects/weave/game-over.png',
