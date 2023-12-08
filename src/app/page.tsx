@@ -9,11 +9,11 @@ import rehypeRaw from 'rehype-raw';
 import weave from './projects/weave';
 import { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
+import godolors from './projects/godolors';
 
 export default function Home() {
-  const projects: Project[] = [weave, pitchBlack, pp, godotSharper];
+  const projects: Project[] = [weave, pitchBlack, pp, godotSharper, godolors];
   const fanOf: string[] = ['Fullstack', 'Chalmers M.Sc.'];
-
   const [selectedProject, setSelectedProject] = useState<string | undefined>();
 
   const cartridgeClicked = (id: string) => {
@@ -21,21 +21,6 @@ export default function Home() {
     const element = document.getElementById('projects');
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const images = [
-    {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
-  ];
 
   return (
     <div className="mt-16 px-8">
