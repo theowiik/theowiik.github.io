@@ -4,12 +4,14 @@ const pitchBlack: Project = {
   id: 'pitch-black',
   name: 'PITCH-BLACK',
   description: `
-**About the game:**<br/>
+<h1 className="text-3xl font-bold">About the game</h1>
+
 In PITCH-BLACK, you find yourself in a dark, mysterious environment. Your mission is to discover hidden enemies using the innovative Rocket2000 technology. This game was developed for the Godot Wild Jam #19.
 
 <br/>
 
-**Gameplay:**<br/>
+<h1 className="text-3xl font-bold">Gameplay</h1>
+
 The gameplay involves navigating through a darkened world, relying on the Rocket2000 to reveal and confront hidden threats.
 
 <br/>

@@ -69,9 +69,9 @@ export default function Home() {
             hidden={selectedProject !== project.id}
           >
             {/* Title */}
-            <span className="text-4xl font-bold">{project.name}</span>
+            <span className="text-5xl font-bold">{project.name}</span>
             <br />
-            <span>{project.shortDescription}</span>
+            <span className="font-mono">{project.shortDescription}</span>
 
             {/* Tags */}
             {project.tags.length > 0 && (
@@ -104,7 +104,9 @@ export default function Home() {
               {project.description}
             </Markdown>
 
-            <hr className="my-16 border border-emerald-500" />
+            {/* <hr className="my-16 border border-emerald-500" /> */}
+
+            <h2 className="text-3xl font-bold mt-8 mb-4">Gallery</h2>
 
             <ImageGallery
               items={project.images.map((image) => ({
