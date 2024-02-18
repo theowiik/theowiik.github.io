@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="mt-16 px-8">
-      <h1 className="text-6xl lg:text-8xl font-bold">Theo Wiik</h1>
+      <h1 className="text-6xl lg:text-8xl font-bold mb-1">Theo Wiik</h1>
       {fanOf.map((thing) => (
         <span
           key={thing}
@@ -100,25 +100,25 @@ export default function Home() {
             ))}
 
             {/* Body */}
-            <Markdown rehypePlugins={[rehypeRaw]} className="mt-4">
+            <Markdown rehypePlugins={[rehypeRaw]} className="mt-4 mb-16">
               {project.description}
             </Markdown>
 
-            {/* <hr className="my-16 border border-emerald-500" /> */}
+            <div className="bg-emerald-700 p-8 rounded-lg">
+              <h2 className="text-3xl font-bold mb-4">Gallery</h2>
 
-            <h2 className="text-3xl font-bold mt-8 mb-4">Gallery</h2>
-
-            <ImageGallery
-              items={project.images.map((image) => ({
-                original: image,
-                thumbnail: image,
-              }))}
-              infinite={true}
-              showPlayButton={false}
-              showFullscreenButton={false}
-              autoPlay={true}
-              thumbnailPosition="bottom"
-            />
+              <ImageGallery
+                items={project.images.map((image) => ({
+                  original: image,
+                  thumbnail: image,
+                }))}
+                infinite={true}
+                showPlayButton={false}
+                showFullscreenButton={false}
+                autoPlay={true}
+                thumbnailPosition="bottom"
+              />
+            </div>
           </div>
         ))}
       </div>
