@@ -10,6 +10,7 @@ import weave from './projects/weave';
 import { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import godolors from './projects/godolors';
+import './page.css';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper, godolors];
@@ -23,22 +24,22 @@ export default function Home() {
   };
 
   return (
-    <div className="mt-16 px-8">
-      <h1 className="text-6xl lg:text-8xl font-bold mb-1">Theo Wiik</h1>
+    <div className="container mx-auto mt-16 xl:px-32">
+      <h1 className="mb-1 text-6xl font-bold lg:text-8xl">Theo Wiik</h1>
       {fanOf.map((thing) => (
         <span
           key={thing}
-          className="inline-block bg-emerald-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+          className="mb-2 mr-2 inline-block rounded-full bg-emerald-300 px-3 py-1 text-sm font-semibold text-gray-800"
         >
           {thing}
         </span>
       ))}
-      <p className="text-xl mt-2">
+      <p className="mt-2 text-xl">
         Software Engineer based in Gothenburg. Reach me on{' '}
         <a
           href="https://www.linkedin.com/in/theo-wiik/"
           target="_blank"
-          className="text-emerald-300 font-bold"
+          className="font-bold text-emerald-300"
         >
           LinkedIn
         </a>
@@ -46,10 +47,10 @@ export default function Home() {
         work with systems programming and game development.
       </p>
       {/* Cartridges */}
-      <div className="flex flex-wrap justify-center items-center my-8 gap-8">
+      <div className="my-8 flex flex-wrap items-center justify-center gap-8">
         {projects.map((project) => (
           <div
-            className="flex justify-center items-center"
+            className="flex items-center justify-center"
             key={project.id}
             onClick={() => cartridgeClicked(project.id)}
           >
@@ -65,7 +66,7 @@ export default function Home() {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="mb-10 my-32"
+            className="my-32 mb-10"
             id={project.id}
             hidden={selectedProject !== project.id}
           >
@@ -80,7 +81,7 @@ export default function Home() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block bg-emerald-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    className="mb-2 mr-2 inline-block rounded-full bg-emerald-300 px-3 py-1 text-sm font-semibold text-gray-800"
                   >
                     {tag}
                   </span>
@@ -94,19 +95,19 @@ export default function Home() {
                 key={link.url}
                 href={link.url}
                 target="_blank"
-                className="text-blue-400 mr-2 mb-2"
+                className="mb-2 mr-2 text-blue-400"
               >
                 [{link.name}]
               </a>
             ))}
 
             {/* Body */}
-            <Markdown rehypePlugins={[rehypeRaw]} className="mt-4 mb-16">
+            <Markdown rehypePlugins={[rehypeRaw]} className="mb-16 mt-4">
               {project.description}
             </Markdown>
 
-            <div className="bg-emerald-700 p-8 rounded-lg">
-              <h2 className="text-3xl font-bold mb-4">Gallery</h2>
+            <div className="rounded-lg bg-emerald-700 p-8">
+              <h2 className="mb-4 text-3xl font-bold">Gallery</h2>
 
               <ImageGallery
                 items={project.images.map((image) => ({
