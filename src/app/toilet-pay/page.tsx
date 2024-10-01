@@ -74,14 +74,14 @@ export default function ToiletPay() {
   };
 
   return (
-    <div className="bg h-screen pt-16">
+    <div className="bg h-screen pt-8">
       <div className="container mx-auto px-8">
-        <h1 className="mb-4 text-5xl font-bold">Toilet Pay 🚽</h1>
-        <p className="mb-4 text-sm">
+        <h1 className="mb-4 text-6xl font-bold">Toilet Pay 🚽</h1>
+        <p className="mb-2 text-sm">
           Calculate earned money while on the toilet.
         </p>
 
-        <label className="font-semibold">Salary (SEK)</label>
+        <label className="text-sm font-semibold">Salary (SEK)</label>
         <br />
         <input
           type="number"
@@ -90,7 +90,7 @@ export default function ToiletPay() {
           className="w-full rounded-lg border-gray-300 p-2 text-xl"
         />
 
-        <div className="my-16">
+        <div className="mb-8 mt-8">
           <div className="text-5xl">
             {(salary ? elapsedTimeMs * milliSalary(salary) : 0).toFixed(4)} kr{' '}
           </div>
@@ -100,14 +100,14 @@ export default function ToiletPay() {
 
         <button
           onClick={handleStartStop}
-          className={`mb-3 w-full rounded-md py-8 text-white ${isTimerOn ? 'bg-yellow-800' : 'bg-amber-600'}`}
+          className={`mb-3 w-full rounded-md py-6 text-white ${isTimerOn ? 'bg-yellow-800' : 'bg-amber-600'}`}
         >
           {isTimerOn ? 'Stop Timer' : 'Start Timer'}
         </button>
 
         <button
           onClick={handleReset}
-          className="w-full rounded-md bg-stone-600 py-8 text-white"
+          className="w-full rounded-md bg-stone-600 py-3 text-white"
         >
           Reset
         </button>
