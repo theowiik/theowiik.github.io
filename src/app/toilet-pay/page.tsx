@@ -63,7 +63,7 @@ export default function ToiletPay() {
     setIsTimerOn(!isTimerOn);
   };
 
-  const handleSalaryChange = (e) => {
+  const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSalary(value === '' ? undefined : Number(value)); // Allow empty input
   };
@@ -78,7 +78,7 @@ export default function ToiletPay() {
       <div className="container mx-auto px-8">
         <h1 className="mb-4 text-5xl font-bold">Toilet Pay 🚽</h1>
         <p className="mb-4 text-sm">
-          Calculate your salary while on the toilet.
+          Calculate earned money while on the toilet.
         </p>
 
         <label className="font-semibold">Salary (SEK)</label>
