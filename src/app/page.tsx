@@ -10,6 +10,7 @@ import weave from './projects/weave';
 import { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import godolors from './projects/godolors';
+import './page.css';
 
 export default function Home() {
   const projects: Project[] = [weave, pitchBlack, pp, godotSharper, godolors];
@@ -23,7 +24,7 @@ export default function Home() {
   };
 
   return (
-    <div className="mt-16 px-8">
+    <div className="container mx-auto xl:px-32 mt-16">
       <h1 className="text-6xl lg:text-8xl font-bold mb-1">Theo Wiik</h1>
       {fanOf.map((thing) => (
         <span
