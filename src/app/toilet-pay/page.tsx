@@ -11,21 +11,16 @@ export const monthlyToSeconds = (monthlySalary: number) => {
 export default function ToiletPay() {
   const [salary, setSalary] = useState(40000);
   const [isTimerOn, setIsTimerOn] = useState(false);
-  const [time, setTime] = useState(0);
-  const [earnings, setEarnings] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval;
 
     if (isTimerOn) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 0.1);
-
-        const salaryPerSecond = salary / (30 * 24 * 60 * 60);
-        const salaryPerTenthSecond = salaryPerSecond / 10;
-        setEarnings((prevEarnings) => prevEarnings + salaryPerTenthSecond);
+        setElapsedTime((prevTime) => prevTime + 0.1);
       }, 100);
-    } else if (!isTimerOn && time !== 0) {
+    } else if (!isTimerOn && elapsedTime !== 0) {
       clearInterval(interval);
     }
 
@@ -43,22 +38,33 @@ export default function ToiletPay() {
   return (
     <div className="bg h-screen pt-16">
       <div className="container mx-auto px-8">
-        <h1 className="text-5xl font-bold">Toilet Pay</h1>
-        <label>Salary (SEK):</label>
+        <h1 className="mb-4 text-5xl font-bold">Toilet Pay</h1>
+        <p>Calculate your salary while on the toilet.</p>
+
+        <label className="font-semibold">Salary (SEK)</label>
+        <br />
         <input
           type="number"
           value={salary}
           onChange={handleSalaryChange}
-          className="border-4"
+          className="w-full rounded-lg border-gray-300 p-2 text-xl"
         />
-        <div>Time: {time.toFixed(1)} seconds</div>{' '}
-        <div className="mb-8 text-5xl text-xl">{earnings.toFixed(5)} SEK</div>
+
+        <div className="my-16">
+          <div className="text-5xl font-mono">
+            {(elapsedTime * monthlyToSeconds(salary)).toFixed(5)} SEK
+          </div>
+
+          <div>Time: {elapsedTime.toFixed(1)} seconds</div>
+        </div>
+
         <button
           onClick={handleStartStop}
           className="mb-3 w-full rounded bg-green-500 py-8 text-white"
         >
           {isTimerOn ? 'Stop Timer' : 'Start Timer'}
         </button>
+
         <button className="w-full rounded bg-red-500 py-8 text-white">
           Reset
         </button>
