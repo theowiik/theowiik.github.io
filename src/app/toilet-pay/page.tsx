@@ -3,29 +3,61 @@
 import { useState, useEffect } from 'react';
 import './style.css';
 
-export const monthlyToSeconds = (monthlySalary: number) => {
-  const workHours = 168;
-  return monthlySalary / (workHours * 60 * 60);
+/**
+ * Convert salary/month to salary/ms.
+ *
+ * @param monthlySalary monthly salary in SEK.
+ * @returns salary per millisecond.
+ */
+const milliSalary = (monthlySalary: number) => {
+  const workHoursPerMonth = 168;
+  const millisPerHour = 60 * 60 * 1000;
+  const perHour = monthlySalary / workHoursPerMonth;
+  return perHour / millisPerHour;
 };
 
+const msToTimeStr = (ms: number): string => {
+  const totalSeconds = Math.floor(ms / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const formatUnit = (value: number, unit: string) =>
+    `${value} ${unit}${value !== 1 ? 's' : ''}`;
+
+  const parts: string[] = [];
+  if (hours > 0) parts.push(formatUnit(hours, 'hour'));
+  if (minutes > 0) parts.push(formatUnit(minutes, 'minute'));
+  if (seconds > 0 || parts.length === 0)
+    parts.push(formatUnit(seconds, 'second'));
+
+  return parts.join(' ');
+};
+
+const pollRateMs = 10;
+
 export default function ToiletPay() {
-  const [salary, setSalary] = useState(40000);
+  const [salary, setSalary] = useState(40_000);
   const [isTimerOn, setIsTimerOn] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
 
   useEffect(() => {
-    let interval;
+    let interval: NodeJS.Timeout | null = null;
 
     if (isTimerOn) {
       interval = setInterval(() => {
-        setElapsedTime((prevTime) => prevTime + 0.1);
-      }, 100);
-    } else if (!isTimerOn && elapsedTime !== 0) {
-      clearInterval(interval);
+        setElapsedTimeMs((prevTime) => prevTime + pollRateMs);
+      }, pollRateMs);
     }
 
-    return () => clearInterval(interval);
-  }, [isTimerOn, salary]);
+    if (!isTimerOn && elapsedTimeMs !== 0) {
+      if (interval) clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isTimerOn, elapsedTimeMs]);
 
   const handleStartStop = () => {
     setIsTimerOn(!isTimerOn);
@@ -33,6 +65,11 @@ export default function ToiletPay() {
 
   const handleSalaryChange = (e) => {
     setSalary(Number(e.target.value));
+  };
+
+  const handleReset = () => {
+    setIsTimerOn(false);
+    setElapsedTimeMs(0);
   };
 
   return (
@@ -51,21 +88,24 @@ export default function ToiletPay() {
         />
 
         <div className="my-16">
-          <div className="text-5xl font-mono">
-            {(elapsedTime * monthlyToSeconds(salary)).toFixed(5)} SEK
+          <div className="font-mono text-5xl">
+            {(elapsedTimeMs * milliSalary(salary)).toFixed(5)} SEK
           </div>
 
-          <div>Time: {elapsedTime.toFixed(1)} seconds</div>
+          <div className="font-mono">Time: {msToTimeStr(elapsedTimeMs)}</div>
         </div>
 
         <button
           onClick={handleStartStop}
-          className="mb-3 w-full rounded bg-green-500 py-8 text-white"
+          className={`mb-3 w-full rounded py-8 text-white ${isTimerOn ? 'bg-blue-400' : 'bg-green-400'}`}
         >
           {isTimerOn ? 'Stop Timer' : 'Start Timer'}
         </button>
 
-        <button className="w-full rounded bg-red-500 py-8 text-white">
+        <button
+          onClick={handleReset}
+          className="w-full rounded bg-red-400 py-8 text-white"
+        >
           Reset
         </button>
       </div>
