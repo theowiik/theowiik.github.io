@@ -37,7 +37,7 @@ const msToTimeStr = (ms: number): string => {
 const pollRateMs = 10;
 
 export default function ToiletPay() {
-  const [salary, setSalary] = useState(40_000);
+  const [salary, setSalary] = useState<number | undefined>(40_000);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
 
@@ -64,7 +64,8 @@ export default function ToiletPay() {
   };
 
   const handleSalaryChange = (e) => {
-    setSalary(Number(e.target.value));
+    const value = e.target.value;
+    setSalary(value === '' ? undefined : Number(value)); // Allow empty input
   };
 
   const handleReset = () => {
@@ -76,20 +77,22 @@ export default function ToiletPay() {
     <div className="bg h-screen pt-16">
       <div className="container mx-auto px-8">
         <h1 className="mb-4 text-5xl font-bold">Toilet Pay 🚽</h1>
-        <p>Calculate your salary while on the toilet.</p>
+        <p className="mb-4 text-sm">
+          Calculate your salary while on the toilet.
+        </p>
 
         <label className="font-semibold">Salary (SEK)</label>
         <br />
         <input
           type="number"
-          value={salary}
+          value={salary !== undefined ? salary : ''} // Handle undefined case for input
           onChange={handleSalaryChange}
           className="w-full rounded-lg border-gray-300 p-2 text-xl"
         />
 
         <div className="my-16">
           <div className="text-5xl">
-            {(elapsedTimeMs * milliSalary(salary)).toFixed(4)} kr
+            {(salary ? elapsedTimeMs * milliSalary(salary) : 0).toFixed(4)} kr{' '}
           </div>
 
           <div>Time: {msToTimeStr(elapsedTimeMs)}</div>
@@ -97,7 +100,7 @@ export default function ToiletPay() {
 
         <button
           onClick={handleStartStop}
-          className={`mb-3 w-full rounded-md py-8 text-white ${isTimerOn ? 'bg-yellow-800' : 'bg-amber-600'}`} 
+          className={`mb-3 w-full rounded-md py-8 text-white ${isTimerOn ? 'bg-yellow-800' : 'bg-amber-600'}`}
         >
           {isTimerOn ? 'Stop Timer' : 'Start Timer'}
         </button>
