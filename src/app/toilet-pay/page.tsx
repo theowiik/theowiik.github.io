@@ -89,7 +89,7 @@ export default function ToiletPay() {
 
         <div className="my-16">
           <div className="text-5xl">
-            {(elapsedTimeMs * milliSalary(salary)).toFixed(5)} SEK
+            {(elapsedTimeMs * milliSalary(salary)).toFixed(4)} kr
           </div>
 
           <div>Time: {msToTimeStr(elapsedTimeMs)}</div>
@@ -97,14 +97,14 @@ export default function ToiletPay() {
 
         <button
           onClick={handleStartStop}
-          className={`mb-3 w-full rounded py-8 text-white ${isTimerOn ? 'bg-blue-400' : 'bg-green-400'}`}
+          className={`mb-3 w-full rounded-md py-8 text-white ${isTimerOn ? 'bg-yellow-800' : 'bg-amber-600'}`} 
         >
           {isTimerOn ? 'Stop Timer' : 'Start Timer'}
         </button>
 
         <button
           onClick={handleReset}
-          className="w-full rounded bg-slate-600 py-8 text-white"
+          className="w-full rounded-md bg-stone-600 py-8 text-white"
         >
           Reset
         </button>
