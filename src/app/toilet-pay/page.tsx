@@ -75,7 +75,7 @@ export default function ToiletPay() {
   return (
     <div className="bg h-screen pt-16">
       <div className="container mx-auto px-8">
-        <h1 className="mb-4 text-5xl font-bold">Toilet Pay</h1>
+        <h1 className="mb-4 text-5xl font-bold">Toilet Pay 🚽</h1>
         <p>Calculate your salary while on the toilet.</p>
 
         <label className="font-semibold">Salary (SEK)</label>
@@ -88,11 +88,11 @@ export default function ToiletPay() {
         />
 
         <div className="my-16">
-          <div className="font-mono text-5xl">
+          <div className="text-5xl">
             {(elapsedTimeMs * milliSalary(salary)).toFixed(5)} SEK
           </div>
 
-          <div className="font-mono">Time: {msToTimeStr(elapsedTimeMs)}</div>
+          <div>Time: {msToTimeStr(elapsedTimeMs)}</div>
         </div>
 
         <button
@@ -104,7 +104,7 @@ export default function ToiletPay() {
 
         <button
           onClick={handleReset}
-          className="w-full rounded bg-red-400 py-8 text-white"
+          className="w-full rounded bg-slate-600 py-8 text-white"
         >
           Reset
         </button>
