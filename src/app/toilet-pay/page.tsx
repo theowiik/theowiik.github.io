@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getSalary, persistSalary } from './storage';
 import './style.css';
 
 /**
@@ -37,9 +38,17 @@ const msToTimeStr = (ms: number): string => {
 const pollRateMs = 10;
 
 export default function ToiletPay() {
-  const [salary, setSalary] = useState<number | undefined>(40_000);
+  const [salary, setSalary] = useState<number | null>(4000000);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
+
+  useEffect(() => {
+    const salaryFromStorage = getSalary();
+
+    if (salaryFromStorage != null) {
+      setSalary(salaryFromStorage);
+    }
+  }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -65,7 +74,15 @@ export default function ToiletPay() {
 
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSalary(value === '' ? undefined : Number(value)); // Allow empty input
+
+    if (value === '' || value == null) {
+      setSalary(null);
+      return;
+    }
+
+    const newSalary = Number(value);
+    setSalary(newSalary);
+    persistSalary(newSalary);
   };
 
   const handleReset = () => {
@@ -85,15 +102,18 @@ export default function ToiletPay() {
         <br />
         <input
           type="number"
-          value={salary !== undefined ? salary : ''} // Handle undefined case for input
+          value={salary == null ? '' : salary}
           onChange={handleSalaryChange}
           className="w-full rounded-lg border-gray-300 p-2 text-xl"
         />
 
         <div className="mb-8 mt-8">
-          <div className="text-5xl">
-            {(salary ? elapsedTimeMs * milliSalary(salary) : 0).toFixed(4)} kr{' '}
-          </div>
+          <p>
+            <span className="break-all text-5xl">
+              {(salary ? elapsedTimeMs * milliSalary(salary) : 0).toFixed(4)}
+            </span>
+            <span className="text-4xl"> kr</span>
+          </p>
 
           <div>Time: {msToTimeStr(elapsedTimeMs)}</div>
         </div>
