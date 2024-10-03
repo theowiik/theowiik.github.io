@@ -1,7 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getSalary, persistSalary } from './storage';
+import {
+  clearStartTime,
+  getSalary,
+  getStartTime,
+  persistSalary,
+  persistStartTime,
+} from './storage';
 import './style.css';
 
 /**
@@ -39,37 +45,29 @@ const pollRateMs = 10;
 
 export default function ToiletPay() {
   const [salary, setSalary] = useState<number | null>(4000000);
-  const [isTimerOn, setIsTimerOn] = useState(false);
-  const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
+  const [isTimerOn, setIsTimerOn] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
 
   useEffect(() => {
     const salaryFromStorage = getSalary();
-
     if (salaryFromStorage != null) {
       setSalary(salaryFromStorage);
     }
+
+    const startTimeFromStorage = getStartTime();
+    if (startTimeFromStorage != null) {
+      setStartTime(startTimeFromStorage);
+    }
   }, []);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-
-    if (isTimerOn) {
-      interval = setInterval(() => {
-        setElapsedTimeMs((prevTime) => prevTime + pollRateMs);
-      }, pollRateMs);
-    }
-
-    if (!isTimerOn && elapsedTimeMs !== 0) {
-      if (interval) clearInterval(interval);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isTimerOn, elapsedTimeMs]);
-
   const handleStartStop = () => {
-    setIsTimerOn(!isTimerOn);
+    const newIsTimerOn = !isTimerOn;
+    setIsTimerOn(newIsTimerOn);
+
+    if (newIsTimerOn) {
+      persistStartTime(Date.now());
+      setStartTime(Date.now());
+    }
   };
 
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,12 +85,24 @@ export default function ToiletPay() {
 
   const handleReset = () => {
     setIsTimerOn(false);
-    setElapsedTimeMs(0);
+    setStartTime(null);
+    clearStartTime()
+  };
+
+  const calculatePay = (): string => {
+    if (!salary) return (0).toFixed(4);
+    if (!startTime) return (0).toFixed(4);
+
+    const elapsedTimeMs = Date.now() - startTime;
+    const value = elapsedTimeMs * milliSalary(salary);
+
+    return value.toFixed(4);
   };
 
   return (
     <div className="bg h-screen pt-8">
       <div className="container mx-auto px-8">
+        {getStartTime()}
         <h1 className="mb-4 text-6xl font-bold">Toilet Pay 🚽</h1>
         <p className="mb-2 text-sm">
           Calculate earned money while on the toilet.
@@ -109,13 +119,11 @@ export default function ToiletPay() {
 
         <div className="mb-8 mt-8">
           <p>
-            <span className="break-all text-5xl">
-              {(salary ? elapsedTimeMs * milliSalary(salary) : 0).toFixed(4)}
-            </span>
+            <span className="break-all text-5xl">{calculatePay()}</span>
             <span className="text-4xl"> kr</span>
           </p>
 
-          <div>Time: {msToTimeStr(elapsedTimeMs)}</div>
+          <div>Time: {msToTimeStr(0)}</div>
         </div>
 
         <button
